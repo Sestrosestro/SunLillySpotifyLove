@@ -20,7 +20,7 @@ let carouselInterval;
 let snakeSegments = [];
 
 // Lista de imagens do casal (31 imagens)
-const imageFiles = Array.from({length: 31}, (_, i) => `assets/images/img${i + 1}.jpeg`);
+const imageFiles = Array.from({length: 31}, (_, i) => `img${i + 1}.jpeg`);
 
 // Inicialização
 function init() {
@@ -407,5 +407,6 @@ window.addEventListener('resize', () => {
         createLightSnake();
     }, 100);
 });
+
 
 console.log("Script simplificado carregado!");
