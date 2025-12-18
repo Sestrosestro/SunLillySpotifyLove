@@ -24,10 +24,10 @@ const imageFiles = Array.from({length: 31}, (_, i) => `assets/images/img${i + 1}
 
 // Inicialização
 function init() {
-    console.log("Iniciando Sun and Moon Player com MUITOS corações...");
+    console.log("Iniciando Sun and Moon Player...");
     
-    // Criar MUITOS corações no fundo
-    createMassiveHearts();
+    // Criar corações no fundo (reduzido)
+    createBackgroundHearts();
     
     // Carregar imagens
     loadImages();
@@ -40,12 +40,6 @@ function init() {
     
     // Configurar event listeners
     setupEventListeners();
-    
-    // Iniciar animação de corações extras
-    startHeartAnimations();
-    
-    // Criar corações dentro do carrossel
-    createCarouselHearts();
     
     // Iniciar a música nos 30 segundos
     setTimeout(() => {
@@ -69,84 +63,46 @@ function init() {
     }, 1000);
 }
 
-// Criar MUITOS corações flutuantes no fundo
-function createMassiveHearts() {
+// Criar corações flutuantes no fundo (reduzido)
+function createBackgroundHearts() {
     if (!heartsContainer) return;
     
     heartsContainer.innerHTML = '';
     
-    // Criar 300 corações! (MUITOS corações)
-    for (let i = 0; i < 300; i++) {
+    // Criar 80 corações (reduzido de 300)
+    for (let i = 0; i < 80; i++) {
         createFloatingHeart(i);
-        
-        // Criar em batches para não travar o navegador
-        if (i % 50 === 0) setTimeout(() => {}, 0);
     }
     
-    console.log("300 corações criados no fundo!");
+    console.log("80 corações criados no fundo!");
 }
 
 // Criar um coração flutuante
 function createFloatingHeart(index) {
     const heart = document.createElement('div');
     
-    const heartType = Math.floor(Math.random() * 4) + 1;
-    const isSpecial = Math.random() < 0.15; // 15% são especiais
-    const sizeClass = getRandomSizeClass();
+    heart.className = 'floating-heart-music type-1';
     
-    heart.className = `floating-heart-music type-${heartType} ${sizeClass}`;
-    if (isSpecial) heart.className += ' special';
+    // Tamanhos aleatórios
+    const sizes = ['tiny', '', 'medium'];
+    const size = sizes[Math.floor(Math.random() * sizes.length)];
+    if (size) heart.className += ' ' + size;
     
     heart.innerHTML = '❤';
     
-    const startLeft = Math.random() * 130 - 15;
-    const animationDelay = Math.random() * 40;
-    const color = getRandomHeartColor();
-    const durations = [18, 22, 26, 30];
-    const duration = durations[heartType - 1] + Math.random() * 10 - 5;
+    const startLeft = Math.random() * 120 - 10;
+    const animationDelay = Math.random() * 20;
+    const colors = ['rgba(255, 0, 100, 0.5)', 'rgba(255, 77, 148, 0.4)', 'rgba(255, 150, 200, 0.3)'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const duration = 25 + Math.random() * 15;
     
     heart.style.left = `${startLeft}%`;
     heart.style.animationDelay = `${animationDelay}s`;
     heart.style.animationDuration = `${duration}s`;
     heart.style.color = color;
-    
-    if (isSpecial) {
-        heart.style.filter = `drop-shadow(0 0 30px ${color}) brightness(1.5)`;
-        heart.style.zIndex = '2';
-    }
+    heart.style.filter = `drop-shadow(0 0 8px ${color})`;
     
     heartsContainer.appendChild(heart);
-}
-
-// Funções auxiliares para tamanho e cor
-function getRandomSizeClass() {
-    const sizes = ['tiny', 'tiny', '', 'medium', 'medium', 'large', 'xlarge'];
-    const weights = [4, 4, 5, 3, 3, 2, 1];
-    
-    let totalWeight = weights.reduce((a, b) => a + b, 0);
-    let random = Math.random() * totalWeight;
-    
-    for (let i = 0; i < sizes.length; i++) {
-        if (random < weights[i]) return sizes[i];
-        random -= weights[i];
-    }
-    
-    return '';
-}
-
-function getRandomHeartColor() {
-    const colors = [
-        'rgba(255, 0, 100, 0.7)',
-        'rgba(255, 77, 148, 0.65)',
-        'rgba(255, 150, 200, 0.6)',
-        'rgba(255, 100, 150, 0.55)',
-        'rgba(255, 200, 220, 0.5)',
-        'rgba(255, 50, 100, 0.75)',
-        'rgba(255, 120, 180, 0.6)',
-        'rgba(255, 180, 220, 0.45)',
-    ];
-    
-    return colors[Math.floor(Math.random() * colors.length)];
 }
 
 // Criar cobrinha de luz ao redor da foto
@@ -156,34 +112,34 @@ function createLightSnake() {
     lightSnake.innerHTML = '';
     snakeSegments = [];
     
-    // Criar 16 segmentos para a cobrinha
-    for (let i = 0; i < 16; i++) {
+    // Criar 12 segmentos para a cobrinha
+    for (let i = 0; i < 12; i++) {
         const segment = document.createElement('div');
         segment.className = 'snake-segment';
         segment.dataset.index = i;
         
         // Posições iniciais (ao redor do retângulo)
-        if (i < 4) {
+        if (i < 3) {
             // Topo
             segment.style.top = '-10px';
-            segment.style.left = `${(i * 25) + 12.5}%`;
+            segment.style.left = `${(i * 33) + 16.5}%`;
             segment.style.width = '60px';
             segment.style.height = '20px';
-        } else if (i < 8) {
+        } else if (i < 6) {
             // Direita
-            segment.style.top = `${((i - 4) * 25) + 12.5}%`;
+            segment.style.top = `${((i - 3) * 33) + 16.5}%`;
             segment.style.left = '100%';
             segment.style.width = '20px';
             segment.style.height = '60px';
-        } else if (i < 12) {
+        } else if (i < 9) {
             // Base
             segment.style.top = '100%';
-            segment.style.left = `${((i - 8) * 25) + 12.5}%`;
+            segment.style.left = `${((i - 6) * 33) + 16.5}%`;
             segment.style.width = '60px';
             segment.style.height = '20px';
         } else {
             // Esquerda
-            segment.style.top = `${((i - 12) * 25) + 12.5}%`;
+            segment.style.top = `${((i - 9) * 33) + 16.5}%`;
             segment.style.left = '-10px';
             segment.style.width = '20px';
             segment.style.height = '60px';
@@ -213,18 +169,17 @@ function startSnakeAnimation() {
                 blur(${2 + wave}px)
                 drop-shadow(0 0 ${10 + wave * 10}px #ff0064)
                 drop-shadow(0 0 ${15 + wave * 15}px #ff4d94)
-                drop-shadow(0 0 ${20 + wave * 20}px #ff99c2)
             `;
             
             // Pequeno movimento
             const moveX = Math.sin(segmentAngle * 1.5) * 3;
             const moveY = Math.cos(segmentAngle * 1.5) * 3;
             
-            if (index < 4) {
+            if (index < 3) {
                 segment.style.transform = `translateX(${moveX}px)`;
-            } else if (index < 8) {
+            } else if (index < 6) {
                 segment.style.transform = `translateY(${moveY}px)`;
-            } else if (index < 12) {
+            } else if (index < 9) {
                 segment.style.transform = `translateX(${-moveX}px)`;
             } else {
                 segment.style.transform = `translateY(${-moveY}px)`;
@@ -235,57 +190,6 @@ function startSnakeAnimation() {
     }
     
     animateSnake();
-}
-
-// Criar corações dentro do carrossel
-function createCarouselHearts() {
-    const carousel = document.querySelector('.photo-carousel');
-    if (!carousel) return;
-    
-    const innerHearts = carousel.querySelector('.carousel-inner-hearts');
-    if (!innerHearts) return;
-    
-    // Criar 50 corações dentro do carrossel
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            createInnerHeart(innerHearts, i);
-        }, i * 200);
-    }
-}
-
-function createInnerHeart(container, index) {
-    const heart = document.createElement('div');
-    heart.className = 'inner-heart';
-    heart.innerHTML = '❤';
-    
-    const startX = Math.random() * 100;
-    const endX = startX + (Math.random() * 40 - 20);
-    const delay = Math.random() * 30;
-    const duration = 15 + Math.random() * 10;
-    const colors = ['#ff0064', '#ff4d94', '#ff99c2'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const size = Math.random() * 20 + 10;
-    
-    heart.style.setProperty('--start-x', `${startX}%`);
-    heart.style.setProperty('--end-x', `${endX}%`);
-    heart.style.left = `${startX}%`;
-    heart.style.animationDelay = `${delay}s`;
-    heart.style.animationDuration = `${duration}s`;
-    heart.style.color = color;
-    heart.style.fontSize = `${size}px`;
-    heart.style.filter = `drop-shadow(0 0 15px ${color})`;
-    
-    container.appendChild(heart);
-    
-    // Remover após animação
-    setTimeout(() => {
-        if (heart.parentNode === container) {
-            container.removeChild(heart);
-            
-            // Criar novo coração
-            setTimeout(() => createInnerHeart(container, index), Math.random() * 5000 + 2000);
-        }
-    }, (delay + duration) * 1000);
 }
 
 // Carregar imagens no carrossel
@@ -398,9 +302,6 @@ function setupEventListeners() {
     audioPlayer.addEventListener('play', () => {
         console.log("Música iniciada");
         startCarousel();
-        
-        // Efeito especial nos corações quando a música começa
-        createMusicStartEffect();
     });
     
     // Quando a música pausar
@@ -425,75 +326,11 @@ function togglePlay() {
         audioPlayer.play().then(() => {
             playIcon.className = 'fas fa-pause';
             startCarousel();
-            createMusicStartEffect();
         }).catch(e => {
             console.log("Erro ao tocar música:", e);
         });
     }
     isPlaying = !isPlaying;
-}
-
-// Efeito especial quando a música começa
-function createMusicStartEffect() {
-    // Adicionar mais corações
-    for (let i = 0; i < 30; i++) {
-        setTimeout(() => createRandomHeart(), i * 50);
-    }
-    
-    // Efeito na cobrinha
-    if (snakeSegments.length > 0) {
-        snakeSegments.forEach((segment, index) => {
-            setTimeout(() => {
-                segment.style.transition = 'all 0.5s ease';
-                segment.style.filter += ' brightness(2) contrast(2)';
-                
-                setTimeout(() => {
-                    segment.style.transition = '';
-                    segment.style.filter = segment.style.filter.replace(' brightness(2) contrast(2)', '');
-                }, 500);
-            }, index * 100);
-        });
-    }
-}
-
-// Criar coração aleatório
-function createRandomHeart() {
-    if (!heartsContainer) return;
-    
-    const heart = document.createElement('div');
-    heart.className = 'floating-heart-music';
-    
-    const heartType = Math.floor(Math.random() * 4) + 1;
-    heart.classList.add(`type-${heartType}`);
-    
-    const sizes = ['tiny', 'medium', 'large'];
-    const size = sizes[Math.floor(Math.random() * sizes.length)];
-    if (size) heart.classList.add(size);
-    
-    heart.innerHTML = '❤';
-    
-    const left = Math.random() * 100;
-    const sizePx = size === 'tiny' ? 16 : size === 'medium' ? 32 : 42;
-    const duration = Math.random() * 8 + 15;
-    const delay = Math.random() * 3;
-    const color = getRandomHeartColor();
-    
-    heart.style.left = `${left}%`;
-    heart.style.bottom = '0';
-    heart.style.fontSize = `${sizePx}px`;
-    heart.style.color = color;
-    heart.style.opacity = '0.9';
-    heart.style.animationDuration = `${duration}s`;
-    heart.style.animationDelay = `${delay}s`;
-    heart.style.filter = `drop-shadow(0 0 20px ${color}) brightness(1.3)`;
-    
-    heartsContainer.appendChild(heart);
-    
-    setTimeout(() => {
-        if (heart.parentNode === heartsContainer) {
-            heartsContainer.removeChild(heart);
-        }
-    }, (duration + delay) * 1000);
 }
 
 // Atualizar barra de progresso e timer
@@ -558,20 +395,6 @@ function updateVolumeIcon(volume) {
     }
 }
 
-// Iniciar animações de corações extras
-function startHeartAnimations() {
-    const headerHearts = document.querySelectorAll('.logo .heart-icon, .carousel-hearts .heart, .extra-hearts .heart, .footer-hearts .heart');
-    
-    headerHearts.forEach((heart, index) => {
-        heart.style.animation = `gentlePulse ${Math.random() * 2 + 2}s infinite ${index * 0.3}s`;
-    });
-    
-    // Adicionar corações periodicamente
-    setInterval(() => {
-        createRandomHeart();
-    }, 2000);
-}
-
 // Inicializar quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -585,4 +408,4 @@ window.addEventListener('resize', () => {
     }, 100);
 });
 
-console.log("Script com MUITOS corações e cobrinha de luz carregado!");
+console.log("Script simplificado carregado!");

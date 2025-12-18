@@ -13,11 +13,10 @@ body {
     min-height: 100vh;
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 0, 100, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(255, 77, 148, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 50% 50%, rgba(255, 150, 200, 0.1) 0%, transparent 30%);
+        radial-gradient(circle at 90% 80%, rgba(255, 77, 148, 0.15) 0%, transparent 25%);
 }
 
-/* ANIMAÇÕES PARA MUITOS CORAÇÕES */
+/* ANIMAÇÕES PARA CORAÇÕES */
 @keyframes floatMusic1 {
     0% {
         transform: translateY(100vh) translateX(0px) scale(0.3) rotate(0deg);
@@ -31,57 +30,6 @@ body {
     }
     100% {
         transform: translateY(-150px) translateX(40px) scale(0.8) rotate(180deg);
-        opacity: 0;
-    }
-}
-
-@keyframes floatMusic2 {
-    0% {
-        transform: translateY(100vh) translateX(-30px) scale(0.4) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: 0.9;
-    }
-    85% {
-        opacity: 0.15;
-    }
-    100% {
-        transform: translateY(-200px) translateX(60px) scale(0.9) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-@keyframes floatMusic3 {
-    0% {
-        transform: translateY(100vh) translateX(50px) scale(0.5) rotate(0deg);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    80% {
-        opacity: 0.1;
-    }
-    100% {
-        transform: translateY(-250px) translateX(-40px) scale(0.7) rotate(540deg);
-        opacity: 0;
-    }
-}
-
-@keyframes floatMusic4 {
-    0% {
-        transform: translateY(100vh) translateX(-60px) scale(0.6) rotate(0deg);
-        opacity: 0;
-    }
-    25% {
-        opacity: 0.95;
-    }
-    75% {
-        opacity: 0.05;
-    }
-    100% {
-        transform: translateY(-300px) translateX(80px) scale(0.6) rotate(720deg);
         opacity: 0;
     }
 }
@@ -121,11 +69,6 @@ body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@keyframes floatHearts {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
 }
 
 /* COBRINHA DE LUZ */
@@ -230,7 +173,7 @@ body {
     }
 }
 
-/* MUITOS CORAÇÕES NO FUNDO */
+/* CORAÇÕES NO FUNDO */
 .hearts-bg {
     position: fixed;
     top: 0;
@@ -244,58 +187,33 @@ body {
 
 .floating-heart-music {
     position: absolute;
-    font-size: 28px;
+    font-size: 24px;
     opacity: 0;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     will-change: transform, opacity;
-    filter: drop-shadow(0 0 15px currentColor);
+    filter: drop-shadow(0 0 10px currentColor);
 }
 
-/* 4 tipos diferentes de flutuação */
 .floating-heart-music.type-1 {
     animation-name: floatMusic1;
-    animation-duration: 18s;
-}
-
-.floating-heart-music.type-2 {
-    animation-name: floatMusic2;
-    animation-duration: 22s;
-}
-
-.floating-heart-music.type-3 {
-    animation-name: floatMusic3;
-    animation-duration: 26s;
-}
-
-.floating-heart-music.type-4 {
-    animation-name: floatMusic4;
-    animation-duration: 30s;
+    animation-duration: 25s;
 }
 
 /* Tamanhos diferentes */
 .floating-heart-music.tiny {
-    font-size: 18px;
-    opacity: 0.6;
-    filter: drop-shadow(0 0 8px currentColor);
+    font-size: 16px;
+    opacity: 0.5;
 }
 
 .floating-heart-music.medium {
-    font-size: 32px;
-    opacity: 0.7;
-    filter: drop-shadow(0 0 12px currentColor);
+    font-size: 28px;
+    opacity: 0.6;
 }
 
 .floating-heart-music.large {
-    font-size: 42px;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 18px currentColor);
-}
-
-.floating-heart-music.xlarge {
-    font-size: 56px;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 25px currentColor);
+    font-size: 36px;
+    opacity: 0.7;
 }
 
 /* Layout principal */
@@ -322,8 +240,8 @@ header {
 .heart-icon {
     font-size: 32px;
     color: #ff0064;
-    animation: heartbeat 2s infinite, spin 15s linear infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.6));
+    animation: heartbeat 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 100, 0.5));
 }
 
 .logo h1 {
@@ -333,7 +251,7 @@ header {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 15px rgba(255, 0, 100, 0.5);
+    text-shadow: 0 2px 10px rgba(255, 0, 100, 0.4);
     background-size: 200% auto;
     animation: textShine 3s linear infinite;
 }
@@ -350,7 +268,7 @@ header {
     font-weight: 400;
     margin-top: 5px;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(255, 153, 194, 0.4);
+    text-shadow: 0 0 8px rgba(255, 153, 194, 0.3);
 }
 
 /* Player section */
@@ -367,32 +285,12 @@ header {
     padding: 25px;
     width: 100%;
     box-shadow: 
-        0 15px 35px rgba(255, 0, 100, 0.2),
-        0 0 60px rgba(255, 77, 148, 0.15),
+        0 10px 25px rgba(255, 0, 100, 0.15),
+        0 0 50px rgba(255, 77, 148, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 0, 100, 0.4);
+    border: 1px solid rgba(255, 0, 100, 0.3);
     position: relative;
     overflow: hidden;
-}
-
-.player-container::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, #ff0064, #ff4d94, #ff0064);
-    border-radius: 18px;
-    z-index: -1;
-    animation: borderGlow 4s linear infinite;
-    filter: blur(3px);
-}
-
-@keyframes borderGlow {
-    0% { opacity: 0.5; }
-    50% { opacity: 0.9; }
-    100% { opacity: 0.5; }
 }
 
 /* Carrossel de fotos */
@@ -408,8 +306,8 @@ header {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 
-        0 8px 30px rgba(0, 0, 0, 0.6),
-        inset 0 0 40px rgba(255, 0, 100, 0.25);
+        0 5px 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 0, 100, 0.15);
     background-color: #1a1a1a;
     animation: neonPulse 4s ease-in-out infinite;
     z-index: 2;
@@ -418,14 +316,14 @@ header {
 @keyframes neonPulse {
     0%, 100% {
         box-shadow: 
-            0 8px 30px rgba(0, 0, 0, 0.6),
-            inset 0 0 40px rgba(255, 0, 100, 0.25);
+            0 5px 20px rgba(0, 0, 0, 0.5),
+            inset 0 0 20px rgba(255, 0, 100, 0.15);
     }
     50% {
         box-shadow: 
-            0 8px 30px rgba(0, 0, 0, 0.6),
-            inset 0 0 40px rgba(255, 0, 100, 0.35),
-            0 0 25px rgba(255, 0, 100, 0.4);
+            0 5px 20px rgba(0, 0, 0, 0.5),
+            inset 0 0 20px rgba(255, 0, 100, 0.25),
+            0 0 15px rgba(255, 0, 100, 0.2);
     }
 }
 
@@ -458,7 +356,7 @@ header {
 
 .loading-images p {
     font-size: 16px;
-    text-shadow: 0 0 10px rgba(255, 77, 148, 0.6);
+    text-shadow: 0 0 8px rgba(255, 77, 148, 0.5);
 }
 
 .carousel-slide {
@@ -490,63 +388,6 @@ header {
     background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
 }
 
-/* MUITOS Corações do carrossel */
-.carousel-hearts {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    max-width: 180px;
-}
-
-.carousel-hearts .heart {
-    font-size: 20px;
-    color: #fff;
-    animation: floatHearts 3s infinite, twinkle 2s infinite, gentlePulse 3s infinite;
-    filter: drop-shadow(0 0 12px #ff0064);
-    display: inline-block;
-}
-
-/* Corações dentro do carrossel */
-.carousel-inner-hearts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.inner-heart {
-    position: absolute;
-    font-size: 16px;
-    color: #ff4d94;
-    opacity: 0;
-    animation: floatInnerHeart 15s linear infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 77, 148, 0.8));
-}
-
-@keyframes floatInnerHeart {
-    0% {
-        transform: translateY(100%) translateX(var(--start-x)) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: 0.9;
-    }
-    85% {
-        opacity: 0.2;
-    }
-    100% {
-        transform: translateY(-100%) translateX(var(--end-x)) rotate(360deg);
-        opacity: 0;
-    }
-}
-
 /* Controles do player */
 .player-controls {
     display: flex;
@@ -566,14 +407,14 @@ header {
     font-weight: 700;
     color: #fff;
     margin-bottom: 8px;
-    text-shadow: 0 2px 15px rgba(255, 0, 100, 0.7);
+    text-shadow: 0 2px 10px rgba(255, 0, 100, 0.6);
 }
 
 .heart-icon-small {
     color: #ff0064;
     margin: 0 5px;
-    animation: heartbeat 1s infinite, spin 5s linear infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 0, 100, 0.8));
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 100, 0.6));
 }
 
 .song-artist {
@@ -582,7 +423,7 @@ header {
     font-weight: 500;
     letter-spacing: 1px;
     animation: twinkle 3s infinite;
-    text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
+    text-shadow: 0 0 8px rgba(255, 77, 148, 0.3);
 }
 
 .progress-area {
@@ -598,7 +439,7 @@ header {
     margin-bottom: 8px;
     cursor: pointer;
     overflow: hidden;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .progress {
@@ -621,33 +462,13 @@ header {
     }
 }
 
-.progress::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -8px;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    background-color: #ff0064;
-    border-radius: 50%;
-    box-shadow: 0 0 20px #ff0064;
-    opacity: 0;
-    transition: opacity 0.3s;
-    animation: gentlePulse 1.5s infinite;
-}
-
-.progress-bar:hover .progress::after {
-    opacity: 1;
-}
-
 .timer {
     display: flex;
     justify-content: space-between;
     color: #ff99c2;
     font-size: 14px;
     font-weight: 500;
-    text-shadow: 0 0 8px rgba(255, 153, 194, 0.4);
+    text-shadow: 0 0 4px rgba(255, 153, 194, 0.3);
 }
 
 .controls {
@@ -673,29 +494,15 @@ header {
     border-radius: 50%;
 }
 
-.control-btn:hover {
-    background-color: rgba(255, 0, 100, 0.2);
-    color: #ff4d94;
-    transform: scale(1.1);
-}
-
 .play-btn {
     background: linear-gradient(135deg, #ff0064, #ff4d94, #ff99c2);
     width: 80px;
     height: 80px;
     font-size: 32px;
     box-shadow: 
-        0 0 40px rgba(255, 0, 100, 0.6),
-        0 10px 30px rgba(0, 0, 0, 0.4);
+        0 0 30px rgba(255, 0, 100, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.3);
     animation: gentlePulse 3s infinite;
-}
-
-.play-btn:hover {
-    transform: scale(1.15);
-    box-shadow: 
-        0 0 60px rgba(255, 0, 100, 0.8),
-        0 15px 40px rgba(0, 0, 0, 0.5);
-    animation: none;
 }
 
 #play-icon {
@@ -715,7 +522,7 @@ header {
     color: #ff4d94;
     font-size: 20px;
     animation: bounce 2s infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 77, 148, 0.6));
+    filter: drop-shadow(0 0 4px rgba(255, 77, 148, 0.5));
 }
 
 .volume-slider {
@@ -726,7 +533,7 @@ header {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 .volume-level {
@@ -737,29 +544,6 @@ header {
     transition: width 0.2s;
     animation: gentlePulse 4s infinite;
 }
-
-/* MUITOS Corações extras */
-.extra-hearts {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.extra-hearts .heart {
-    font-size: 24px;
-    color: #ff4d94;
-    animation: floatHearts 4s infinite, twinkle 3s infinite, gentlePulse 3s infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 77, 148, 0.7));
-}
-
-.extra-hearts .heart:nth-child(1) { animation-delay: 0s; }
-.extra-hearts .heart:nth-child(2) { animation-delay: 0.2s; }
-.extra-hearts .heart:nth-child(3) { animation-delay: 0.4s; }
-.extra-hearts .heart:nth-child(4) { animation-delay: 0.6s; }
-.extra-hearts .heart:nth-child(5) { animation-delay: 0.8s; }
-.extra-hearts .heart:nth-child(6) { animation-delay: 1s; }
 
 /* Rodapé */
 footer {
@@ -772,35 +556,23 @@ footer {
     display: flex;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
 }
 
 .footer-hearts .heart {
-    font-size: 24px;
+    font-size: 22px;
     color: #ff4d94;
-    animation: floatHearts 5s infinite, heartbeat 2s infinite, spin 8s linear infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 77, 148, 0.7));
+    animation: heartbeat 2s infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 77, 148, 0.6));
 }
-
-.footer-hearts .heart:nth-child(1) { animation-delay: 0s; }
-.footer-hearts .heart:nth-child(2) { animation-delay: 0.3s; }
-.footer-hearts .heart:nth-child(3) { animation-delay: 0.6s; }
-.footer-hearts .heart:nth-child(4) { animation-delay: 0.9s; }
-.footer-hearts .heart:nth-child(5) { animation-delay: 1.2s; }
-.footer-hearts .heart:nth-child(6) { animation-delay: 1.5s; }
-.footer-hearts .heart:nth-child(7) { animation-delay: 1.8s; }
-.footer-hearts .heart:nth-child(8) { animation-delay: 2.1s; }
 
 /* Letra da música */
 .lyrics-section {
     margin-top: 25px;
     padding: 20px;
-    background: rgba(26, 26, 26, 0.8);
+    background: rgba(26, 26, 26, 0.7);
     border-radius: 15px;
     max-height: 200px;
     overflow-y: auto;
-    border: 1px solid rgba(255, 0, 100, 0.3);
-    box-shadow: inset 0 0 20px rgba(255, 0, 100, 0.1);
 }
 
 .lyrics-container {
@@ -808,7 +580,7 @@ footer {
     font-size: 16px;
     line-height: 1.6;
     text-align: center;
-    text-shadow: 0 0 12px rgba(255, 153, 194, 0.4);
+    text-shadow: 0 0 10px rgba(255, 153, 194, 0.3);
 }
 
 /* Efeitos especiais de brilho */
@@ -825,12 +597,6 @@ footer {
             transparent 50%),
         radial-gradient(circle at top right, 
             rgba(255, 77, 148, 0.15) 0%, 
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 150, 200, 0.15) 0%, 
-            transparent 50%),
-        radial-gradient(circle at bottom right, 
-            rgba(255, 100, 150, 0.15) 0%, 
             transparent 50%);
     pointer-events: none;
     z-index: 1;
@@ -843,32 +609,6 @@ footer {
     }
     50% {
         opacity: 0.8;
-    }
-}
-
-/* Partículas flutuantes */
-.particle {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-    animation: particleFloat 20s linear infinite;
-    filter: blur(1px);
-}
-
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) translateX(var(--start-x)) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.2;
-    }
-    100% {
-        transform: translateY(-100px) translateX(var(--end-x)) rotate(360deg);
-        opacity: 0;
     }
 }
 
@@ -930,13 +670,5 @@ footer {
     
     .lyrics-section {
         max-height: 150px;
-    }
-    
-    .carousel-hearts {
-        max-width: 120px;
-    }
-    
-    .carousel-hearts .heart {
-        font-size: 16px;
     }
 }
