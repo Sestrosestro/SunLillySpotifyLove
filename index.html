@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun and Moon - Entre Órbita e Ausência</title>
+    <link rel="stylesheet" href="poem-styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff0064">
+</head>
+<body>
+    <!-- Fundo com corações sutis -->
+    <div class="hearts-bg" id="hearts-container"></div>
+    
+    <!-- Tela do Poema -->
+    <div class="poem-container" id="poem-container">
+        <div class="poem-content">
+            <div class="poem-header">
+                <div class="heart-icon">❤</div>
+                <h1>Sun and Moon</h1>
+                <div class="subtitle">Entre Órbita e Ausência</div>
+            </div>
+            
+            <div class="poem-text">
+                <div class="poem-stanza">
+                    <p>Não nasceram para a pressa do encontro,</p>
+                    <p>mas para a liturgia da distância.</p>
+                    <p>O Sol — um incêndio que aprende a esperar.</p>
+                    <p>A Lua — um espelho que escolhe a constância.</p>
+                </div>
+                
+                <div class="poem-stanza">
+                    <p>Ele escreve o dia com sílabas de ouro,</p>
+                    <p>incendeia horizontes, sem nunca possuir.</p>
+                    <p>Ela costura a noite em silêncio antigo,</p>
+                    <p>bordando saudades na arte de existir.</p>
+                </div>
+                
+                <div class="poem-stanza">
+                    <p>Nenhum mendiga luz, nem vive à deriva,</p>
+                    <p>são inteiros demais para a ideia de falta.</p>
+                    <p>Quando um se retira, o outro vigia,</p>
+                    <p>pois amar também é saber quem se exalta.</p>
+                </div>
+                
+                <div class="poem-stanza">
+                    <p>No raro eclipse, o tempo se dobra,</p>
+                    <p>o céu prende o fôlego, cede o lugar.</p>
+                    <p>Ela toca o fogo sem medo de arder,</p>
+                    <p>ele aceita a sombra sem se apagar.</p>
+                </div>
+                
+                <div class="poem-stanza">
+                    <p>E seguem fiéis à própria gravidade,</p>
+                    <p>dois destinos que nunca se anulam.</p>
+                    <p>Há amores que vivem de órbita e fé:</p>
+                    <p class="highlight-line">não se tocam — mas eternamente se acumulam.</p>
+                </div>
+            </div>
+            
+            <div class="password-section">
+                <div class="password-instruction">
+                    <div class="lock-icon">🔒</div>
+                    <p>Para desvendar nosso universo, digite a palavra-chave:</p>
+                </div>
+                
+                <div class="password-input-container">
+                    <input 
+                        type="password" 
+                        id="password-input" 
+                        placeholder="Digite a senha do coração..."
+                        autocomplete="off"
+                    >
+                    <button id="submit-password">
+                        <span class="arrow-icon">→</span>
+                    </button>
+                </div>
+                
+                <div class="error-message" id="error-message">
+                    <div class="error-icon">⚠</div>
+                    <span>Senha incorreta. Tente novamente.</span>
+                </div>
+            </div>
+            
+            <div class="poem-footer">
+                <div class="footer-hearts">
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                    <span class="heart">❤</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tela de Transição -->
+    <div class="transition-screen" id="transition-screen">
+        <div class="transition-content">
+            <div class="transition-heart">❤</div>
+            <h2>Acesso Concedido</h2>
+            <p>Redirecionando para nossa música especial...</p>
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="poem-script.js"></script>
+</body>
+</html>

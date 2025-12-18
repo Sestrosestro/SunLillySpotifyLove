@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun and Moon - Nossa Música Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff0064">
+</head>
+<body>
+    <!-- Fundo com MUITOS corações flutuantes -->
+    <div class="hearts-bg" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <div>
+                    <h1>Sun and Moon</h1>
+                    <div class="subtitle">Nossa música especial</div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <section class="player-section">
+                <div class="player-container">
+                    <!-- Carrossel de fotos do casal com cobrinha de luz -->
+                    <div class="photo-carousel-container">
+                        <!-- Cobrinha de luz ao redor da foto -->
+                        <div class="light-snake" id="light-snake"></div>
+                        
+                        <div class="photo-carousel">
+                            <div class="carousel-track" id="carousel-track">
+                                <!-- Imagens serão carregadas via JavaScript -->
+                                <div class="loading-images">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <p>Carregando nossas memórias...</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Corações flutuantes dentro do carrossel -->
+                            <div class="carousel-inner-hearts"></div>
+                        </div>
+                        
+                        <div class="carousel-hearts">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles do player -->
+                    <div class="player-controls">
+                        <div class="song-info">
+                            <h2 class="song-title" id="song-title">Us <span class="heart-icon-small">❤</span></h2>
+                            <p class="song-artist" id="song-artist">God</p>
+                        </div>
+                        
+                        <div class="progress-area">
+                            <div class="progress-bar" id="progress-bar">
+                                <div class="progress" id="progress"></div>
+                            </div>
+                            <div class="timer">
+                                <span id="current-time">0:30</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="controls">
+                            <button class="control-btn play-btn" id="play-btn">
+                                <i class="fas fa-play" id="play-icon"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up" id="volume-icon"></i>
+                            <div class="volume-slider" id="volume-slider">
+                                <div class="volume-level" id="volume-level"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Corações extras -->
+                        <div class="extra-hearts">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Letra da música -->
+            <section class="lyrics-section">
+                <div class="lyrics-container" id="lyrics">
+                    <!-- Letra será carregada via JavaScript -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Elemento de áudio oculto -->
+    <audio id="audio-player" preload="metadata" loop>
+        <source src="assets/audio/musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

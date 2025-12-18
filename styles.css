@@ -1,0 +1,942 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 100, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(255, 77, 148, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255, 150, 200, 0.1) 0%, transparent 30%);
+}
+
+/* ANIMAÇÕES PARA MUITOS CORAÇÕES */
+@keyframes floatMusic1 {
+    0% {
+        transform: translateY(100vh) translateX(0px) scale(0.3) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-150px) translateX(40px) scale(0.8) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatMusic2 {
+    0% {
+        transform: translateY(100vh) translateX(-30px) scale(0.4) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(-200px) translateX(60px) scale(0.9) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatMusic3 {
+    0% {
+        transform: translateY(100vh) translateX(50px) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-250px) translateX(-40px) scale(0.7) rotate(540deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatMusic4 {
+    0% {
+        transform: translateY(100vh) translateX(-60px) scale(0.6) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.95;
+    }
+    75% {
+        opacity: 0.05;
+    }
+    100% {
+        transform: translateY(-300px) translateX(80px) scale(0.6) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes floatHearts {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* COBRINHA DE LUZ */
+.light-snake {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 30px;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.snake-segment {
+    position: absolute;
+    background: linear-gradient(90deg, 
+        transparent,
+        #ff0064,
+        #ff4d94,
+        #ff99c2,
+        #ff4d94,
+        #ff0064,
+        transparent
+    );
+    border-radius: 10px;
+    filter: 
+        blur(3px)
+        drop-shadow(0 0 15px #ff0064)
+        drop-shadow(0 0 25px #ff4d94)
+        drop-shadow(0 0 35px #ff99c2);
+    opacity: 0.9;
+    animation: snakeMove 3s linear infinite, snakePulse 2s ease-in-out infinite;
+}
+
+/* Animação da cobrinha */
+@keyframes snakeMove {
+    0% {
+        filter: 
+            blur(3px)
+            drop-shadow(0 0 15px #ff0064)
+            drop-shadow(0 0 25px #ff4d94)
+            drop-shadow(0 0 35px #ff99c2);
+        opacity: 0.7;
+    }
+    50% {
+        filter: 
+            blur(4px)
+            drop-shadow(0 0 20px #ff4d94)
+            drop-shadow(0 0 30px #ff99c2)
+            drop-shadow(0 0 40px #ff0064);
+        opacity: 1;
+    }
+    100% {
+        filter: 
+            blur(3px)
+            drop-shadow(0 0 15px #ff0064)
+            drop-shadow(0 0 25px #ff4d94)
+            drop-shadow(0 0 35px #ff99c2);
+        opacity: 0.7;
+    }
+}
+
+/* Pulsação da cobrinha */
+@keyframes snakePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Efeito de rastro da cobrinha */
+.snake-segment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 0, 100, 0.4)
+    );
+    filter: blur(8px);
+    animation: snakeTrail 2s linear infinite;
+}
+
+@keyframes snakeTrail {
+    0% {
+        left: -20px;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* MUITOS CORAÇÕES NO FUNDO */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-heart-music {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
+/* 4 tipos diferentes de flutuação */
+.floating-heart-music.type-1 {
+    animation-name: floatMusic1;
+    animation-duration: 18s;
+}
+
+.floating-heart-music.type-2 {
+    animation-name: floatMusic2;
+    animation-duration: 22s;
+}
+
+.floating-heart-music.type-3 {
+    animation-name: floatMusic3;
+    animation-duration: 26s;
+}
+
+.floating-heart-music.type-4 {
+    animation-name: floatMusic4;
+    animation-duration: 30s;
+}
+
+/* Tamanhos diferentes */
+.floating-heart-music.tiny {
+    font-size: 18px;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.floating-heart-music.medium {
+    font-size: 32px;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 12px currentColor);
+}
+
+.floating-heart-music.large {
+    font-size: 42px;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 18px currentColor);
+}
+
+.floating-heart-music.xlarge {
+    font-size: 56px;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 25px currentColor);
+}
+
+/* Layout principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.heart-icon {
+    font-size: 32px;
+    color: #ff0064;
+    animation: heartbeat 2s infinite, spin 15s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.6));
+}
+
+.logo h1 {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff0064, #ff4d94, #ff99c2, #ff4d94, #ff0064);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 15px rgba(255, 0, 100, 0.5);
+    background-size: 200% auto;
+    animation: textShine 3s linear infinite;
+}
+
+@keyframes textShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.subtitle {
+    color: #ff99c2;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 153, 194, 0.4);
+}
+
+/* Player section */
+.player-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.player-container {
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    border-radius: 15px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 
+        0 15px 35px rgba(255, 0, 100, 0.2),
+        0 0 60px rgba(255, 77, 148, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 0, 100, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.player-container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff0064, #ff4d94, #ff0064);
+    border-radius: 18px;
+    z-index: -1;
+    animation: borderGlow 4s linear infinite;
+    filter: blur(3px);
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.5; }
+}
+
+/* Carrossel de fotos */
+.photo-carousel-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.photo-carousel {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(255, 0, 100, 0.25);
+    background-color: #1a1a1a;
+    animation: neonPulse 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 30px rgba(0, 0, 0, 0.6),
+            inset 0 0 40px rgba(255, 0, 100, 0.25);
+    }
+    50% {
+        box-shadow: 
+            0 8px 30px rgba(0, 0, 0, 0.6),
+            inset 0 0 40px rgba(255, 0, 100, 0.35),
+            0 0 25px rgba(255, 0, 100, 0.4);
+    }
+}
+
+/* Carrossel interno */
+.carousel-track {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.loading-images {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ff4d94;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-images .heart-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.loading-images p {
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(255, 77, 148, 0.6);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    filter: brightness(1.3) contrast(1.2) saturate(1.2);
+}
+
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+}
+
+/* MUITOS Corações do carrossel */
+.carousel-hearts {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 180px;
+}
+
+.carousel-hearts .heart {
+    font-size: 20px;
+    color: #fff;
+    animation: floatHearts 3s infinite, twinkle 2s infinite, gentlePulse 3s infinite;
+    filter: drop-shadow(0 0 12px #ff0064);
+    display: inline-block;
+}
+
+/* Corações dentro do carrossel */
+.carousel-inner-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.inner-heart {
+    position: absolute;
+    font-size: 16px;
+    color: #ff4d94;
+    opacity: 0;
+    animation: floatInnerHeart 15s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 77, 148, 0.8));
+}
+
+@keyframes floatInnerHeart {
+    0% {
+        transform: translateY(100%) translateX(var(--start-x)) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100%) translateX(var(--end-x)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Controles do player */
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.song-info {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.song-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 15px rgba(255, 0, 100, 0.7);
+}
+
+.heart-icon-small {
+    color: #ff0064;
+    margin: 0 5px;
+    animation: heartbeat 1s infinite, spin 5s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 100, 0.8));
+}
+
+.song-artist {
+    font-size: 18px;
+    color: #ff4d94;
+    font-weight: 500;
+    letter-spacing: 1px;
+    animation: twinkle 3s infinite;
+    text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
+}
+
+.progress-area {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    height: 8px;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.6);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff0064, #ff4d94, #ff99c2, #ff4d94, #ff0064);
+    border-radius: 10px;
+    position: relative;
+    transition: width 0.1s linear;
+    background-size: 200% 100%;
+    animation: progressShine 3s linear infinite;
+}
+
+@keyframes progressShine {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-color: #ff0064;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff0064;
+    opacity: 0;
+    transition: opacity 0.3s;
+    animation: gentlePulse 1.5s infinite;
+}
+
+.progress-bar:hover .progress::after {
+    opacity: 1;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+    color: #ff99c2;
+    font-size: 14px;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(255, 153, 194, 0.4);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 20px;
+    position: relative;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.control-btn:hover {
+    background-color: rgba(255, 0, 100, 0.2);
+    color: #ff4d94;
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #ff0064, #ff4d94, #ff99c2);
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    box-shadow: 
+        0 0 40px rgba(255, 0, 100, 0.6),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: gentlePulse 3s infinite;
+}
+
+.play-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 
+        0 0 60px rgba(255, 0, 100, 0.8),
+        0 15px 40px rgba(0, 0, 0, 0.5);
+    animation: none;
+}
+
+#play-icon {
+    font-size: 32px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+}
+
+#volume-icon {
+    color: #ff4d94;
+    font-size: 20px;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 77, 148, 0.6));
+}
+
+.volume-slider {
+    flex: 1;
+    height: 6px;
+    background-color: rgba(51, 51, 51, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.volume-level {
+    height: 100%;
+    width: 80%;
+    background: linear-gradient(90deg, #ff0064, #ff4d94);
+    border-radius: 8px;
+    transition: width 0.2s;
+    animation: gentlePulse 4s infinite;
+}
+
+/* MUITOS Corações extras */
+.extra-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.extra-hearts .heart {
+    font-size: 24px;
+    color: #ff4d94;
+    animation: floatHearts 4s infinite, twinkle 3s infinite, gentlePulse 3s infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 77, 148, 0.7));
+}
+
+.extra-hearts .heart:nth-child(1) { animation-delay: 0s; }
+.extra-hearts .heart:nth-child(2) { animation-delay: 0.2s; }
+.extra-hearts .heart:nth-child(3) { animation-delay: 0.4s; }
+.extra-hearts .heart:nth-child(4) { animation-delay: 0.6s; }
+.extra-hearts .heart:nth-child(5) { animation-delay: 0.8s; }
+.extra-hearts .heart:nth-child(6) { animation-delay: 1s; }
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-hearts .heart {
+    font-size: 24px;
+    color: #ff4d94;
+    animation: floatHearts 5s infinite, heartbeat 2s infinite, spin 8s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 77, 148, 0.7));
+}
+
+.footer-hearts .heart:nth-child(1) { animation-delay: 0s; }
+.footer-hearts .heart:nth-child(2) { animation-delay: 0.3s; }
+.footer-hearts .heart:nth-child(3) { animation-delay: 0.6s; }
+.footer-hearts .heart:nth-child(4) { animation-delay: 0.9s; }
+.footer-hearts .heart:nth-child(5) { animation-delay: 1.2s; }
+.footer-hearts .heart:nth-child(6) { animation-delay: 1.5s; }
+.footer-hearts .heart:nth-child(7) { animation-delay: 1.8s; }
+.footer-hearts .heart:nth-child(8) { animation-delay: 2.1s; }
+
+/* Letra da música */
+.lyrics-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 0, 100, 0.3);
+    box-shadow: inset 0 0 20px rgba(255, 0, 100, 0.1);
+}
+
+.lyrics-container {
+    color: #ff99c2;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(255, 153, 194, 0.4);
+}
+
+/* Efeitos especiais de brilho */
+.photo-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at top left, 
+            rgba(255, 0, 100, 0.15) 0%, 
+            transparent 50%),
+        radial-gradient(circle at top right, 
+            rgba(255, 77, 148, 0.15) 0%, 
+            transparent 50%),
+        radial-gradient(circle at bottom left, 
+            rgba(255, 150, 200, 0.15) 0%, 
+            transparent 50%),
+        radial-gradient(circle at bottom right, 
+            rgba(255, 100, 150, 0.15) 0%, 
+            transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: cornerGlow 6s ease-in-out infinite;
+}
+
+@keyframes cornerGlow {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Partículas flutuantes */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    animation: particleFloat 20s linear infinite;
+    filter: blur(1px);
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(var(--start-x)) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) translateX(var(--end-x)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        max-width: 95%;
+        padding: 10px;
+    }
+    
+    .photo-carousel {
+        height: 300px;
+    }
+    
+    .player-container {
+        padding: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .song-title {
+        font-size: 24px;
+    }
+    
+    .play-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+    
+    .snake-segment {
+        filter: 
+            blur(2px)
+            drop-shadow(0 0 10px #ff0064)
+            drop-shadow(0 0 20px #ff4d94);
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-carousel {
+        height: 250px;
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .song-title {
+        font-size: 22px;
+    }
+    
+    .play-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .lyrics-section {
+        max-height: 150px;
+    }
+    
+    .carousel-hearts {
+        max-width: 120px;
+    }
+    
+    .carousel-hearts .heart {
+        font-size: 16px;
+    }
+}
